@@ -1,0 +1,84 @@
+
+'''''''''''after registered new user it checks login'''''''''''''''''
+
+'''''''''''''''wait for 3 miliseconds...............
+wait 3
+
+
+''''''''''''checking Registerd.Then Login and then clck''''''''''''''''''''
+Device("Device").InsightObject("Registerd.Then Login").Click
+
+''''''''''''''checking text'''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").SetFocus
+'''''''''''''checking "Enter Email Id" text is there or not''''''''''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").CheckProperty("text","Enter Email Id") Then
+     
+      print "Enter Email ID found"
+      else
+      print "Enter Email ID not found"
+      End If
+
+  ''''''''''give value "Enter Email Id" text''''''''''''''
+Device("Device").EnterKeys 0,"rakesh"
+
+''for checking the username value
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").CheckProperty("text","rakesh") Then
+		print "found"
+		else
+		print "Not found"
+	End If 
+End If
+
+''''''''''''''checking text'''''''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").SetFocus
+
+''''''''''''checking "Enter Password" text'''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").CheckProperty("text","Enter Password") Then
+     print "Enter password"
+      else
+      print "Wrong Password"
+      End If
+
+''''''''''give the value to "Enter Password"''''''''''''''''
+Device("Device").EnterKeys 0,"xxxxxxxxx"
+''for checking  value
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").CheckProperty("text","xxxxxxxxxxx") Then
+		print "abc found"
+		else
+		print " Not found"
+	End If 
+End If
+''''''''login button enabled or not '''''''''''''''''
+If Device("Device").App("Explore").MobileButton("Login").CheckProperty("isenabled","true") Then
+	print "Login Button enabled"
+	else
+	print "Login Button Disabled"
+	End If
+
+''''''''''''''selcet login button''''''''''''''''
+Device("Device").App("Explore").MobileButton("Login").Tap
+
+''''''''''''wait for 5 seconds'''''''''''''''
+wait 5
+
+'''''''''''''checking Hello giri, welcome!!! exist or not''''''''''''''''
+If Device("Device").App("Explore").MobileLabel("Hello").Exist And Device("Device").App("Explore").MobileLabel("giri").Exist And Device("Device").App("Explore").MobileLabel(",").Exist And Device("Device").App("Explore").MobileLabel("Welcome!!").Exist Then
+print "Exists"
+else
+print "Wrong User Credetials"
+End If
+
+''''''''''wait for 5 second'''''''''''''
+wait 5
+
+''''''''''logout enabled'''''''''''''
+If Device("Device").App("Explore").MobileButton("Logout").CheckProperty("isenabled","true") Then
+print "Logout Button enabled"
+else
+print "Logout Button Disabled"
+End If
+
+''''''selecting logout button'''''''''''''''''''''''
+Device("Device").App("Explore").MobileButton("Logout").Tap
