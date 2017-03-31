@@ -1,0 +1,594 @@
+
+'--Rakesh (30-Mar-2017) below lines commented 
+''--set device orientation
+' SetDeviceOrientation device_id,"Portrait"
+
+'''''''''''''not install only restart the aplication''''''''''''''''''
+Device("Device").App("Explore").Launch DoNotInstall,Restart
+
+'''''''''''''login lebel is appeared''''''''''''''''''''''''''''
+If Device("Device").App("Explore").MobileLabel("LogIn").Exist Then
+print "LogIn"
+else
+print "Not Found"
+End if
+
+''''''''''''''checking both fields filled up otherwise "login button will not be enabled"'''''''''''''''''''''''''
+
+''''''''''''''if it is empty then it gives "Please enter the fields" toast message'''''''''''''''''' 
+
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").Exist Then
+    If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").Exist Then
+    	If Device("Device").App("Explore").MobileButton("Login").Exist Then
+		print "Please enter the fields"
+		else
+		print "Wrong Text"
+	End If
+End If
+End If
+
+''''''''''''''checking "Enter Email Id" text '''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").CheckProperty("text","Enter Email Id") Then
+     print "Enter Email ID found"
+     else
+     print "Enter Email ID not found"
+     End If
+
+'''''''''''give value to emaid id field''''''''''''''''''''''''''
+Device("Device").EnterKeys 0,"rakesh"
+
+'''''''''''''for checking the Enter Email Id value
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").CheckProperty("text","rakesh") Then
+		print "rakesh found"
+		else
+		print "Not found"
+	End If 
+End If
+
+
+''''''''''''''checking text "Enter Password"'''''''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").CheckProperty("text","Enter Password") Then
+      print "Enter password"
+      else
+      print "Wrong Password"
+      End If
+
+
+''''''''''give the value''''''''''''''''
+Device("Device").EnterKeys 0,"xxxxxxxxxxxxxxxx"
+''for checking  value
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").CheckProperty("text","xxxxxxxxxxxxxxxx") Then
+		print "Password found"
+		else
+		print "Not found"
+	End If 
+End If
+
+
+''''''''login button enabled or not '''''''''''''''''
+
+If Device("Device").App("Explore").MobileButton("Login").CheckProperty("isenabled","true") Then
+	print "Login Button enabled"
+	else
+	print "Login Button Disabled"
+	End If
+
+''''''''''''''selcet login button''''''''''''''''
+Device("Device").App("Explore").MobileButton("Login").Tap
+
+''''''''''''wait for 5 seconds'''''''''''''''
+wait 5
+
+'''''''''''''checking "Hello giri, welcome!!! exist" text or not  ''''''''''''''''
+If Device("Device").App("Explore").MobileLabel("Hello").Exist And Device("Device").App("Explore").MobileLabel("giri").Exist And Device("Device").App("Explore").MobileLabel(",").Exist And Device("Device").App("Explore").MobileLabel("Welcome!!").Exist Then
+print "Exists"
+Else
+print "Wrong User Credetials"
+End If
+
+''''''''''wait for 5 second'''''''''''''
+wait 5
+
+''''''''''logout enabled'''''''''''''
+If Device("Device").App("Explore").MobileButton("Logout").CheckProperty("isenabled","true") Then
+	print "Logout Button enabled"
+	else
+	print "Logout Button Disabled"
+End If
+
+''''''selecting logout button'''''''''''''''''''''''
+Device("Device").App("Explore").MobileButton("Logout").Tap
+
+''''''''''wait for 2 second'''''''''''''
+wait 2
+
+''''''''''checking register enabled'''''''''''''''''
+
+If Device("Device").App("Explore").MobileButton("Register").CheckProperty("isenabled","true") Then
+	print "Register Button enabled"
+	else
+	print "Register Button disabled"
+	End If
+''''''''''wait for 5 second'''''''''''''
+
+wait 5
+
+'''''''''''''select the register button to enter the register fields'''''''''''''''''
+Device("Device").App("Explore").MobileButton("Register").Tap
+
+''''''''''''Checking Register lebel enabled or disabled'''''''''''''''
+If Device("Device").App("Explore").MobileLabel("Register").Exist Then
+	print "Register Lebel"
+	else
+	print "Not Found"
+	End If	
+
+''''''''''wait for 5 second'''''''''''''
+wait 5
+		
+		
+''''''''''all field should be fillup like username, password ,name,dob,gender''''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_3").Exist Then
+    If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_4").Exist Then
+    		If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_5").Exist Then
+    			If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_6").Exist Then
+    			If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_7").Exist Then
+   					 If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_8").Exist Then
+						If Device("Device").App("Explore").MobileButton("Register_2").Exist Then
+							Msgbox "Please enter the fields"
+							print "Please enter the fields"
+						End If
+					End If
+				End If
+			End If
+	End If
+End If
+End If
+
+'''''''''''''''''checking text "Enter Name" text'''''''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_3").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_3").CheckProperty("text","Enter Name") Then
+      print "Enter Name"
+      else
+      print "Wrong Text"
+      End If
+
+
+'''''''''''''''''give the value'''''''''''''''''''
+Device("Device").EnterKeys 0,"raja"
+'''''''''''''''checking value''''''''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_3").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_3").CheckProperty("text","raja") Then
+	print "Found"
+	else
+	print "Not found"
+	End If 
+End If
+
+
+'''''''''checking text "Enter Email id"'''''''''''''''''''
+Device("Device").App("Explore").MobileEdi textt("com.example.girivi.vlogi_4").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_4").CheckProperty("text","Enter Email id") Then
+      
+      print "Enter Email iD"
+      else
+      print "Wrong Text"
+      End If
+
+''''''''''''give the value''''''''''''
+Device("Device").EnterKeys 0,"paja@gmail.com"
+
+'''''''''''''''''checking value''''''''''''''''''''''''
+
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_4").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_4").CheckProperty("text","paja@gmail.com") Then
+	print "Emailid found"
+	else
+	print "Not found"
+	End If 
+End If
+
+'''''''''''''''checking "Enter Password" text''''''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_5").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_5").CheckProperty("text","Enter Password") Then
+      print "Enter Password"
+      else
+      print "Wrong text"
+      End If
+
+  '''''''''''''give the value'''''''''''''''''''    
+Device("Device").EnterKeys 0,"xxxxxxxx"
+''''''''''''''''''''checking value''''''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_5").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_5").CheckProperty("text","xxxxxx") Then
+	print "Password found"
+	else
+	print "Not found"
+	End If 
+End If
+''''''''''''checking "Enter Family Name" text''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_6").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_6").CheckProperty("text","Enter Family Name") Then
+      
+      print "Enter Family Name"
+      else
+      print "Wrong Text"
+      End If
+
+ '''''''''''give value'''''''''''''''''''     
+Device("Device").EnterKeys 0,"Paa"
+''''''''''''''''checking value''''''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_6").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_6").CheckProperty("text","Paaa") Then
+		print "Family name found"
+		else
+		print "Not found"
+	End If 
+End If
+
+'''''''''''''''''checking dob''''''''''''''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_7").SetFocus
+
+'''''''''''''''Checking "Enter Date of Birth" text''''''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_7").CheckProperty("text","Enter Date of Birth") Then
+	print "Enter Date of Birth"
+	else
+	print "wrong Text"
+End If
+
+'''''''''''''give the value'''''''''''''''''''''''''''''''''
+Device("Device").EnterKeys 0,"2/06/1995"
+
+''''''''''''''for checking value''''''''''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_7").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_7").CheckProperty("text","2/06/1995") Then
+		print "24/04/1995"
+		else
+		print "Not found"
+	End If 
+End If
+
+'''''''''''''''''checking gender text''''''''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_8").SetFocus 
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_8").CheckProperty("text","Enter Gender") Then
+      print "Enter Gender"
+      else
+      print "WRONG text"
+      End If
+
+'''''''''''''give the value to the gender field'''''''''''''''''''''''''''''''''
+Device("Device").EnterKeys 0,"Female"
+''''''''''''''''''checking value'''''''''''''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_8").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_8").CheckProperty("text","Female") Then
+		print "Found"
+		else
+		print "Not Found"
+	End If 
+End If
+
+
+''''''''''''''''''register is enabled or not'''''''''''''''''''''
+
+If Device("Device").App("Explore").MobileButton("Register_2").CheckProperty("isenabled","true") Then
+	
+	print "Register Button enabled"
+	else
+        print "Register Button Disabled"
+End If
+
+
+''''''''''select register button..................
+Device("Device").App("Explore").MobileButton("Register_2").Tap
+
+''''''''''''''confirmation after register'''''''''''''''''''
+If Device("Device").App("Explore").MobileButton("Register_2").Tap then
+print "Register Successfully"
+	else
+print "Register Not done"
+End If
+'''''''''''''''wait for 3 miliseconds...............
+wait 3
+
+
+''''''''''''checking Registerd.Then Login and then clck''''''''''''''''''''
+Device("Device").InsightObject("Registerd.Then Login").Click
+
+''''''''''''''checking text'''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").SetFocus
+'''''''''''''checking "Enter Email Id" text is there or not''''''''''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").CheckProperty("text","Enter Email Id") Then
+     
+      print "Enter Email ID found"
+      else
+      print "Enter Email ID not found"
+      End If
+
+  ''''''''''give value "Enter Email Id" text''''''''''''''
+Device("Device").EnterKeys 0,"rakesh"
+
+''for checking the username value
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").CheckProperty("text","rakesh") Then
+		print "found"
+		else
+		print "Not found"
+	End If 
+End If
+
+''''''''''''''checking text'''''''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").SetFocus
+
+''''''''''''checking "Enter Password" text'''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").CheckProperty("text","Enter Password") Then
+     print "Enter password"
+      else
+      print "Wrong Password"
+      End If
+
+''''''''''give the value to "Enter Password"''''''''''''''''
+Device("Device").EnterKeys 0,"xxxxxxxxx"
+''for checking  value
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").CheckProperty("text","xxxxxxxxxxx") Then
+		print "abc found"
+		else
+		print " Not found"
+	End If 
+End If
+''''''''login button enabled or not '''''''''''''''''
+If Device("Device").App("Explore").MobileButton("Login").CheckProperty("isenabled","true") Then
+	print "Login Button enabled"
+	else
+	print "Login Button Disabled"
+	End If
+
+''''''''''''''selcet login button''''''''''''''''
+Device("Device").App("Explore").MobileButton("Login").Tap
+
+''''''''''''wait for 5 seconds'''''''''''''''
+wait 5
+
+'''''''''''''checking Hello giri, welcome!!! exist or not''''''''''''''''
+If Device("Device").App("Explore").MobileLabel("Hello").Exist And Device("Device").App("Explore").MobileLabel("giri").Exist And Device("Device").App("Explore").MobileLabel(",").Exist And Device("Device").App("Explore").MobileLabel("Welcome!!").Exist Then
+print "Exists"
+else
+print "Wrong User Credetials"
+End If
+
+''''''''''wait for 5 second'''''''''''''
+wait 5
+
+''''''''''logout enabled'''''''''''''
+If Device("Device").App("Explore").MobileButton("Logout").CheckProperty("isenabled","true") Then
+print "Logout Button enabled"
+else
+print "Logout Button Disabled"
+End If
+
+''''''selecting logout button'''''''''''''''''''''''
+Device("Device").App("Explore").MobileButton("Logout").Tap
+
+
+''''''''''''''''forgot password is there or not'''''''''''''''''''''''
+If Device("Device").App("Explore").MobileLabel("Forgot password??").Exist Then
+	print "Forgot password??"
+	else
+	print "Wrong Text"
+        End If
+
+''''''''''''''''select forgot password''''''''''''''''''''
+Device("Device").App("Explore").MobileLabel("Forgot password??").Tap
+
+'''''''''''''''''forget password text ''''''''''''''''''
+Device("Device").App("Explore").MobileLabel("Forgot Password").Tap
+If Device("Device").App("Explore").MobileLabel("Forgot Password").Exist Then
+	print "Forgot Password Text"
+	else
+	print "Wrong Text"
+End If
+
+
+'''''''''''''OTP text '''''''''''''''''''
+
+Device("Device").App("Explore").MobileLabel("An OTP will be sent to y").Tap
+If Device("Device").App("Explore").MobileLabel("An OTP will be sent to y").Exist Then
+	print "An OTP will be sent to your register email id"
+	else
+	print "Wrong Text"
+End If
+
+
+''''''''''''''''''''''checking submit button enabled or not''''''''''''''''
+'''''''''''''''''''''''u have to give proper email id other wise not enabled'''''''''''''''''''''
+
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_9").Exist Then
+If Device("Device").App("Explore").MobileButton("submit").Tap Then
+Print "Submit Disabled.Fill this  Field"
+End if
+End if
+
+''''''''''''''''email id text ''''''''''''''''''''''
+
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_9").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_9").CheckProperty("text","Enter Email Id") Then
+	print "Enter Email Id"
+	else
+	print "Wrong Text"
+End If
+
+''''''''''''give the value'''''''''''''''''''''''''''
+Device("Device").EnterKeys 0,"rakesh.paul@hpe.com"
+
+''''''''''''''checking the value'''''''''''''''''''''''
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_9").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_9").CheckProperty("text","rakesh.paul@hpe.com") Then
+		print "rakesh.paul@hpe.com"
+		else
+		print "Not found"
+		End If 
+         End If
+
+'''''''''''''''submit ebabled'''''''''''''''''''''''''
+If Device("Device").App("Explore").MobileButton("submit").CheckProperty("isenabled","true") Then
+print "Submit Enabled"
+else
+print "Submit disabled"
+End if
+
+''''''''''''select submit button'''''''''''''
+Device("Device").App("Explore").MobileButton("submit").Tap
+
+'''''''''confirmation msessage'''''''''''''''''
+
+If Device("Device").App("Explore").MobileButton("submit").Exist Then
+print "OTP has sent to your registered email id, please enter OTP"
+else
+print "Wrong Text"
+End if
+
+'''''''''''''''''verify OTP mobile label text'''''''''''''''''''''
+If Device("Device").App("Explore").MobileLabel("Verify OTP").Exist Then
+print "Verify OTP Text"
+else
+print "Wrong Text"
+End if
+
+
+''''''''''''''''''''OTP has send Mobile label''''''''''''''''''' 
+If Device("Device").App("Explore").MobileLabel("OTP has sent to your reg").Exist Then
+print "OTP has sent to your registered email id, please enter OTP"
+else
+print "Wrong Text"
+End if
+
+
+
+''''''''''''''''''''''checking submit button enabled or not''''''''''''''''
+'''''''''''''''''''''''u have to give proper email OTP other wise not enabled'''''''''''''''''''''
+
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_10").Exist Then
+If Device("Device").App("Explore").MobileButton("submit_2").Tap Then
+Print "Submit Disabled.Fill this  Field"
+End if
+End if
+
+''''''''''''''''''Enter OTP text present or not''''''''''''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_10").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_10").CheckProperty("text","Enter OTP") Then
+print "Enter OTP"
+else
+print "Wrong Text"
+End if
+
+''''''''''''''checking text value''''''''''''''''''''''''
+Device("Device").EnterKeys 0,"752098"
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_10").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_10").CheckProperty("text","752098") Then
+		print "OTP found"
+		else
+		print "OTP Not found"
+
+	End If 
+End If
+
+'''''''''''''''''''Submit Button is correct or not''''''''''''''''''''''
+If Device("Device").App("Explore").MobileButton("submit_2").CheckProperty("isenabled","true") Then
+
+print "Submit Button Enabled"
+	else
+
+print "Submit Button Disabled"
+End If
+'''''''''''Otp Correct or Incorrect''''''''''''''''''''
+Device("Device").App("Explore").MobileButton("submit_2").Tap
+If Device("Device").App("Explore").MobileButton("submit_2").Exist Then
+print "OTP Correct"
+else
+print "OTP Incorrect"
+End If
+
+''''''''''''''''''check Reset password mobile label is there or not'''''''''''''''''''''
+
+If Device("Device").App("Explore").MobileLabel("Reset Password").Exist Then
+	print "Reset Password"
+	else
+	print "Wrong Password"
+End If
+
+''''''''''''''''''Check set your new password is there or not'''''''''''''''''''''
+
+If Device("Device").App("Explore").MobileLabel("Set Your New Password").Exist Then
+	
+	print "Set Your New Password"
+		else
+	print "Wrong Text"
+End If
+
+
+'''''''''''''''check text is there or not
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_11").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").CheckProperty("text","Enter New password") Then
+      
+      print "Enter New password"
+      	else
+      print "Wrong Text"
+      End If
+
+
+'''''''''''''value is there or not'''''''''''''''         
+      Device("Device").EnterKeys 0,"abcd"
+ If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_11").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_11").CheckProperty("text","abcd") Then
+		print "abcd found"
+			else
+		print "Wrong Text"
+		End If 
+        End If
+
+
+'''''''''''''''''check confirm password text is there or not''''''''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_12").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_12").CheckProperty("text","Confirm Password") Then
+       print "Confirm Password"
+      	else
+      print "Wrong Text"
+      End If
+      
+ '''''''''''''value is there or not'''''''''''''''     
+  Device("Device").EnterKeys 0,"rakesh1"
+      If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_12").Exist Then
+		If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_12").CheckProperty("text","rakesh1") Then
+		print "rakesh1 found"
+			else
+		print "Wrong Text"
+		End If 
+End If
+
+
+''''''''''''''''''''check Reset button is enabled or not'''''''''''''''
+If Device("Device").App("Explore").MobileButton("Reset").CheckProperty("isenabled","true") Then
+print "Reset Button enabled"
+	else
+print "Reset Button Disabled"
+End If
+
+''''''''''''''''''''confirmation message'''''''''''''''
+Device("Device").App("Explore").MobileButton("Reset").Tap
+If Device("Device").App("Explore").MobileButton("Reset").Exist Then
+print "Password Changed Successfully"
+	else
+print "Wrong Password"
+End If
+
+
+
+
+
+
+
+
