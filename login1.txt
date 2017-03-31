@@ -1,0 +1,87 @@
+
+
+'''''''''''loin part check user is valid or not
+'''''''''enter emaid id will be check
+'''''''''enter password will be check
+
+
+'--Rakesh (30-Mar-2017) below lines commented 
+''--set device orientation
+' SetDeviceOrientation device_id,"Portrait"
+
+'''''''''''''not install only restart the aplication''''''''''''''''''
+Device("Device").App("Explore").Launch DoNotInstall,Restart
+
+'''''''''''''login lebel is appeared''''''''''''''''''''''''''''
+If Device("Device").App("Explore").MobileLabel("LogIn").Exist Then
+print "LogIn"
+else
+print "Not Found"
+End if
+
+''''''''''''''checking both fields filled up otherwise "login button will not be enabled"'''''''''''''''''''''''''
+
+''''''''''''''if it is empty then it gives "Please enter the fields" toast message'''''''''''''''''' 
+
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").Exist Then
+    If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").Exist Then
+    	If Device("Device").App("Explore").MobileButton("Login").Exist Then
+		print "Please enter the fields"
+		else
+		print "Wrong Text"
+	End If
+End If
+End If
+
+''''''''''''''checking "Enter Email Id" text '''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").CheckProperty("text","Enter Email Id") Then
+     print "Enter Email ID found"
+     else
+     print "Enter Email ID not found"
+     End If
+
+'''''''''''give value to emaid id field''''''''''''''''''''''''''
+Device("Device").EnterKeys 0,"rakesh"
+
+'''''''''''''for checking the Enter Email Id value
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi").CheckProperty("text","rakesh") Then
+		print "rakesh found"
+		else
+		print "Not found"
+	End If 
+End If
+
+
+''''''''''''''checking text "Enter Password"'''''''''''''''''''''
+Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").SetFocus
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").CheckProperty("text","Enter Password") Then
+      print "Enter password"
+      else
+      print "Wrong Password"
+      End If
+
+
+''''''''''give the value''''''''''''''''
+Device("Device").EnterKeys 0,"xxxxxxxxxxxxxxxx"
+''for checking  value
+If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").Exist Then
+	If Device("Device").App("Explore").MobileEdit("com.example.girivi.vlogi_2").CheckProperty("text","xxxxxxxxxxxxxxxx") Then
+		print "Password found"
+		else
+		print "Not found"
+	End If 
+End If
+
+
+''''''''login button enabled or not '''''''''''''''''
+
+If Device("Device").App("Explore").MobileButton("Login").CheckProperty("isenabled","true") Then
+	print "Login Button enabled"
+	else
+	print "Login Button Disabled"
+	End If
+
+''''''''''''''selcet login button''''''''''''''''
+Device("Device").App("Explore").MobileButton("Login").Tap
