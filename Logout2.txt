@@ -1,0 +1,26 @@
+
+'''''''''''after login checks next page text'''''''''''''
+''''''''''logout also'''''''''' 
+
+''''''''''''wait for 5 seconds'''''''''''''''
+wait 5
+
+'''''''''''''checking "Hello giri, welcome!!! exist" text or not  ''''''''''''''''
+If Device("Device").App("Explore").MobileLabel("Hello").Exist And Device("Device").App("Explore").MobileLabel("giri").Exist And Device("Device").App("Explore").MobileLabel(",").Exist And Device("Device").App("Explore").MobileLabel("Welcome!!").Exist Then
+print "Exists"
+Else
+print "Wrong User Credetials"
+End If
+
+''''''''''wait for 5 second'''''''''''''
+wait 5
+
+''''''''''logout enabled'''''''''''''
+If Device("Device").App("Explore").MobileButton("Logout").CheckProperty("isenabled","true") Then
+	print "Logout Button enabled"
+	else
+	print "Logout Button Disabled"
+End If
+
+''''''selecting logout button'''''''''''''''''''''''
+Device("Device").App("Explore").MobileButton("Logout").Tap
