@@ -1,0 +1,28 @@
+
+'==========================Title="Contact Page"===================================================================
+'=========================="Objective=To test the Text is present or not in contact page"=========================
+'=========================="End Result=Text is Present"=========================================================
+'--Rakesh (3-Apr-2017) below lines commented 
+
+Function Contact()
+	SystemUtil.Run "C:\Program Files\Internet Explorer\iexplore.exe","http://localhost:51107/Contact"
+wait 15
+
+Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Contact.").Click
+Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Contact me").Click
+Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Hewelett Packard Enterprise").Click
+Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Hewelett Packard Enterprise").Click
+Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("P:").Click
+Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Controller:").Click
+Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Treasurer:").Click
+
+
+if Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Contact.").Exist And Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Contact me").Exist And Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Hewelett Packard Enterprise").Exist And Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Hewelett Packard Enterprise").Exist And Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("P:").Exist And Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Controller:").Exist And Browser("About Family Expense Managemen").Page("Contact Family Expense").WebElement("Treasurer:").Exist Then
+
+		Contact = "Text is Highlighted"
+		else
+		Contact = "Text is not Highlighted"
+		End if
+		print Contact
+End Function
+Call Contact

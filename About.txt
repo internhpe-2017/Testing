@@ -1,0 +1,21 @@
+
+'==========================Title="About Page"===================================================================
+'=========================="Objective=To test the Text is present or not in about page"=========================
+'=========================="End Result=Text is Present"=========================================================
+'--Rakesh (3-Apr-2017) below lines commented 
+
+Function About()
+	SystemUtil.Run "C:\Program Files\Internet Explorer\iexplore.exe","http://localhost:51107/About"
+wait 15
+
+Browser("About Family Expense Managemen_2").Page("About Family Expense Managemen").WebElement("About.").Click
+Browser("About Family Expense Managemen_2").Page("About Family Expense Managemen").WebElement("Family Expenditure").Click
+Browser("About Family Expense Managemen_2").Page("About Family Expense Managemen").WebElement("This will provide us with").Click
+
+if Browser("About Family Expense Managemen_2").Page("About Family Expense Managemen").WebElement("About.").Exist And Browser("About Family Expense Managemen_2").Page("About Family Expense Managemen").WebElement("Family Expenditure").Exist And Browser("About Family Expense Managemen_2").Page("About Family Expense Managemen").WebElement("This will provide us with").Exist Then
+		print = "Text is Highlighted"
+		else
+		print = "Text is not Highlighted"
+		End if
+End Function
+Call About

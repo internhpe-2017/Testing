@@ -1,0 +1,28 @@
+
+Function Login(Username, Password) 
+	
+
+SystemUtil.Run "C:\Program Files\Internet Explorer\iexplore.exe","http://localhost:51107/Account/Login"
+Browser("Log in Family Expense").Page("Log in Family Expense").WebElement("Log in.").Click
+Browser("Log in Family Expense").Page("Log in Family Expense").WebElement("User name").Click
+Browser("Log in Family Expense").Page("Log in Family Expense").WebEdit("ctl00$MainContent$UserName").Set Username
+Browser("Log in Family Expense").Page("Log in Family Expense").WebElement("Password").Click
+Browser("Log in Family Expense").Page("Log in Family Expense").WebEdit("ctl00$MainContent$Password").Set Password
+Browser("Log in Family Expense").Page("Log in Family Expense").WebCheckBox("ctl00$MainContent$RememberMe").Set "ON"
+Browser("Log in Family Expense").Page("Log in Family Expense").WebButton("Log in").Click
+
+wait 2
+
+Message = Browser("Log in Family Expense").Page("Home Page Family Expense").WebElement("HomeFAMILY EXPENSE MAINTAINENC").GetROProperty("outertext")
+
+If Message = "HomeFAMILY EXPENSE MAINTAINENCE SYSTEMWelcome to Home Page " Then
+	Login = "Login Successfully - Done"
+	else
+	Login = "Login unSuccessfully - Done"
+	End If
+	print Login
+End Function
+Call Login("raka", "abcd@123")
+
+
+

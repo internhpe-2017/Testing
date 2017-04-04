@@ -1,0 +1,39 @@
+
+'==========================Title="Home Page"===================================================================
+'=========================="Objective=To test the Home Page Launched-Successfully"=========================
+'=========================="Objective=And also whatever the text inside the home page should be shown"=========================
+'=========================="End Result=Home Page is Launched-Successfully"=========================================================
+'=========================="End Result=Text inside Homepage not shown because the text order is not properly given inside code"=========================================================
+'--Rakesh (3-Apr-2017) below lines commented 
+
+Function Launch_App()
+	
+SystemUtil.Run "C:\Program Files\Internet Explorer\iexplore.exe","http://localhost:51107/"
+wait 8
+Browser_Name = Browser("Log in Family Expense").GetROProperty("title")
+if Browser_Name = "Home Page Family Expense Management System - Internet Explorer" Then
+Launch_App = "Application Launched-Successfully"
+else
+Launch_App = "Application not Launched-Failed"
+End If
+print Launch_App
+End Function
+Call Launch_App()
+
+
+Function  Home()
+Message = Browser("Log in Family Expense").Page("Home Page Family Expense").WebElement("HomeFAMILY EXPENSE MAINTAINENC").GetROProperty("abcd")
+
+If Message = "HomeFAMILY EXPENSE MAINTAINENCE SYSTEMWelcome to Home Page " Then
+	Home = "Text is Highlighted"
+	else
+	Home = "Text is not Highlighted"
+	End If 
+Msgbox Home
+End Function
+Call Home
+
+
+
+
+

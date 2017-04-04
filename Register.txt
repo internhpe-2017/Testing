@@ -1,0 +1,31 @@
+'==========================Title="Register Page"===================================================================
+'=========================="Objective=To test the Register Page Launched-Successfully"=========================
+'=========================="End Result=Register Page is Launched-Successfully"=========================================================
+'=========================="End Result=Text inside Register Page shown "=========================================================
+'--Rakesh (3-Apr-2017) below lines commented 
+
+Function Register(UserName, Password)
+SystemUtil.Run "C:\Program Files\Internet Explorer\iexplore.exe","http://localhost:51107/Account/Register"
+Browser("Log in Family Expense").Page("Register Family Expense").WebElement("Register.").Click
+Browser("Log in Family Expense").Page("Register Family Expense").WebElement("Create a new account.").Click
+Browser("Log in Family Expense").Page("Register Family Expense").WebElement("User name").Click
+Browser("Log in Family Expense").Page("Register Family Expense").WebEdit("ctl00$MainContent$UserName").Set UserName
+Browser("Log in Family Expense").Page("Register Family Expense").WebElement("Password").Click
+Browser("Log in Family Expense").Page("Register Family Expense").WebEdit("ctl00$MainContent$Password").Set Password
+Browser("Log in Family Expense").Page("Register Family Expense").WebElement("Confirm password").Click
+Browser("Log in Family Expense").Page("Register Family Expense").WebEdit("ctl00$MainContent$ConfirmPassw").Set Password
+Browser("Log in Family Expense").Page("Register Family Expense").WebButton("Register").Click
+
+'==============wait for 2 miliseconds==========================
+wait 2
+
+Message = Browser("Log in Family Expense").Page("Home Page Family Expense").WebElement("HomeFAMILY EXPENSE MAINTAINENC").GetROProperty("outertext")
+
+If Message = "HomeFAMILY EXPENSE MAINTAINENCE SYSTEMWelcome to Home Page " Then
+	Register = "Register Successfully - Done"
+	else
+	Register = "Register unSuccessfully - Done"
+	End If
+	print Register
+End Function
+Call Register("raka", "abcd@123")
